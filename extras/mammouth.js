@@ -12506,8 +12506,11 @@ mammouth.compile = function(code) {
 				return r;
 			case 'Variable':
         var _statement = evalStatement(seq.name);
+        var isConst = /^[_A-Z]*$/.test(_statement);
+        //exclude superglobals
+        isConst = isConst && ['GLOBALS','_SERVER','_GET','_POST','_FILES','_COOKIE','_SESSION','_REQUEST','_ENV','HTTP_RAW_POST_DATA','HTTP_SERVER_VARS', '_PHP_SELF'].indexOf(_statement) === -1;
         // if UPPER_CASE then we assume it's const.
-				var r = (/^[_A-Z]*$/.test(_statement) ? '' : '$') + _statement;
+				var r = (isConst ? '' : '$') + _statement;
 				if(seq.only==true) {
 					r += ';';
 				}
