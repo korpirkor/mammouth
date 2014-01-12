@@ -12505,7 +12505,9 @@ mammouth.compile = function(code) {
         }
 				return r;
 			case 'Variable':
-				var r = '$' + evalStatement(seq.name);
+        var _statement = evalStatement(seq.name);
+        // if UPPER_CASE then we assume it's const.
+				var r = (/^[_A-Z]*$/.test(_statement) ? '' : '$') + _statement;
 				if(seq.only==true) {
 					r += ';';
 				}
