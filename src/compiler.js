@@ -220,7 +220,10 @@ mammouth.compile = function(code) {
 				var n, r;
 				if(typeof seq.name == 'object' && seq.name[1] == '::') {
 					n = seq.name;
-					r = b + '::' + n[0];
+					r = seq.base.name + '::' + n[0];
+				} else if(typeof seq.name == 'object' && seq.name[0] == 'PushArray') {
+					n = '[]'
+					r = b + n;
 				} else if(typeof seq.name == 'string') {
 					n = seq.name;
 					r = b + '->' + n;
@@ -1113,6 +1116,60 @@ mammouth.compile = function(code) {
 				return r;
 			case 'BreakStatement':
 				var r = Tokens.BreakToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'EchoStatement':
+				var r = Tokens.EchoToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'ReturnStatement':
+				var r = Tokens.ReturnToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'RequireStatement':
+				var r = Tokens.RequireToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'Require_onceStatement':
+				var r = Tokens.Require_onceToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'IncludeStatement':
+				var r = Tokens.IncludeToken;
+				if(typeof seq.label !== "undefined" && seq.label !== null) {
+					r += ' ' + evalStatement(seq.label)
+				}
+				if(seq.only == true) {
+					r += ';';
+				}
+				return r;
+			case 'Include_onceStatement':
+				var r = Tokens.Include_onceToken;
 				if(typeof seq.label !== "undefined" && seq.label !== null) {
 					r += ' ' + evalStatement(seq.label)
 				}
