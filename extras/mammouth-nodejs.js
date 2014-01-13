@@ -12948,15 +12948,20 @@ mammouth.compile = function(code) {
 				}
 				return r;
 			case 'Variable':
-        var _statement = evalStatement(seq.name);
-        var isConst = /^[_A-Z]*$/.test(_statement);
-        //class begin with uppercase and contain lower and upper case
-        var isClass = /^[A-Z]{1}/.test(_statement) && /[a-z]/.test(_statement);
-        var isReserved = ['continue', 'break', 'exit'].indexOf(_statement) !== -1;
-        //exclude superglobals
-        isConst = isConst && ['GLOBALS','_SERVER','_GET','_POST','_FILES','_COOKIE','_SESSION','_REQUEST','_ENV','HTTP_RAW_POST_DATA','HTTP_SERVER_VARS', '_PHP_SELF'].indexOf(_statement) === -1;
-        // if UPPER_CASE then we assume it's const.
-				var r = (isConst || isClass || isReserved ? '' : '$') + _statement;
+        var r, _statement = evalStatement(seq.name);
+
+        if(_statement == 'echo') {
+          r = _statement + " ''";
+        } else {
+          var isConst = /^[_A-Z]*$/.test(_statement);
+          //class begin with uppercase and contain lower and upper case
+          var isClass = /^[A-Z]{1}/.test(_statement) && /[a-z]/.test(_statement);
+          var isReserved = ['continue', 'break', 'exit'].indexOf(_statement) !== -1;
+          //exclude superglobals
+          isConst = isConst && ['GLOBALS','_SERVER','_GET','_POST','_FILES','_COOKIE','_SESSION','_REQUEST','_ENV','HTTP_RAW_POST_DATA','HTTP_SERVER_VARS', '_PHP_SELF'].indexOf(_statement) === -1;
+          // if UPPER_CASE then we assume it's const.
+          r = (isConst || isClass || isReserved ? '' : '$') + _statement;
+        }
 				if(seq.only==true) {
 					r += ';';
 				}
