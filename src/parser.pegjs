@@ -656,14 +656,22 @@ statement
 		{ return m; }
 	/ SAMEDENT m:ClassDeclaration EOL?
 		{ return m; }
-	/ ContinueStatement
-	/ BreakStatement
-	/ EchoStatement
-	/ ReturnStatement
-	/ Include_onceStatement
-	/ Require_onceStatement
-	/ RequireStatement
-	/ IncludeStatement
+	/ SAMEDENT m:ContinueStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:BreakStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:EchoStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:ReturnStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:Include_onceStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:Require_onceStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:RequireStatement EOL?
+		{ return m; }
+	/ SAMEDENT m:IncludeStatement EOL?
+		{ return m; }
 	/ FunctionInLineCall
 	/ ExpressionStatement
 	/ blank
@@ -1241,6 +1249,12 @@ Literal
 			value: value
 		};
 	}
+	/ value:PHPLiteral {
+		return {
+			type: "PHPLiteral",
+			value: value
+		}
+	}
 	/ value:EODLiteral {
 		return {
 			type: "EODLiteral",
@@ -1394,6 +1408,14 @@ PropertyName
 	= IdentifierName
 	/ StringLiteral
 	/ NumericLiteral
+
+PHPLiteral
+	= '``' RAW:RAWString+ '``' {
+		return RAW.join("");
+	}
+
+RAWString
+	= !("``") char_:SourceCharacter { return char_; }
 /*
  * Unicode Character Categories
  *

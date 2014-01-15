@@ -1,4 +1,4 @@
-﻿mammouth.VERSION = '0.2.2';
+﻿mammouth.VERSION = '0.2.3';
 mammouth.compile = function(code) {
 	Tokens = mammouth.Tokens;
 	var Use_Slice_Function = false;
@@ -178,6 +178,13 @@ mammouth.compile = function(code) {
 					r += ';\n';
 				} else {
 					r += '\n';
+				}
+				return r;
+			case 'PHPLiteral':
+				r = '';
+				r += seq.value;
+				if(seq.only == true) {
+					r += ';';
 				}
 				return r;
 			case 'Variable':

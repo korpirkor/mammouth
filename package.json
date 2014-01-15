@@ -1,6 +1,6 @@
 {
 	"name": "mammouth",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Unfancy PHP",
 	"author": {
 		"name": "Wael Amine Boutglay",
@@ -13,7 +13,7 @@
 		"url": "git://github.com/btwael/mammouth.git"
 	},
 	"dependencies": {
-		"commander": "2.1.*",
+		"commander": "latest",
 		"pegjs": "latest"
 	}
 }

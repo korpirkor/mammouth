@@ -206,6 +206,8 @@ mammouth.parser = (function(){
         "PropertyNameAndValueList": parse_PropertyNameAndValueList,
         "PropertyAssignment": parse_PropertyAssignment,
         "PropertyName": parse_PropertyName,
+        "PHPLiteral": parse_PHPLiteral,
+        "RAWString": parse_RAWString,
         "Ll": parse_Ll,
         "Lm": parse_Lm,
         "Lo": parse_Lo,
@@ -6056,21 +6058,237 @@ mammouth.parser = (function(){
                         pos = pos0;
                       }
                       if (result0 === null) {
-                        result0 = parse_ContinueStatement();
+                        pos0 = pos;
+                        pos1 = pos;
+                        result0 = parse_SAMEDENT();
+                        if (result0 !== null) {
+                          result1 = parse_ContinueStatement();
+                          if (result1 !== null) {
+                            result2 = parse_EOL();
+                            result2 = result2 !== null ? result2 : "";
+                            if (result2 !== null) {
+                              result0 = [result0, result1, result2];
+                            } else {
+                              result0 = null;
+                              pos = pos1;
+                            }
+                          } else {
+                            result0 = null;
+                            pos = pos1;
+                          }
+                        } else {
+                          result0 = null;
+                          pos = pos1;
+                        }
+                        if (result0 !== null) {
+                          result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                        }
                         if (result0 === null) {
-                          result0 = parse_BreakStatement();
+                          pos = pos0;
+                        }
+                        if (result0 === null) {
+                          pos0 = pos;
+                          pos1 = pos;
+                          result0 = parse_SAMEDENT();
+                          if (result0 !== null) {
+                            result1 = parse_BreakStatement();
+                            if (result1 !== null) {
+                              result2 = parse_EOL();
+                              result2 = result2 !== null ? result2 : "";
+                              if (result2 !== null) {
+                                result0 = [result0, result1, result2];
+                              } else {
+                                result0 = null;
+                                pos = pos1;
+                              }
+                            } else {
+                              result0 = null;
+                              pos = pos1;
+                            }
+                          } else {
+                            result0 = null;
+                            pos = pos1;
+                          }
+                          if (result0 !== null) {
+                            result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                          }
                           if (result0 === null) {
-                            result0 = parse_EchoStatement();
+                            pos = pos0;
+                          }
+                          if (result0 === null) {
+                            pos0 = pos;
+                            pos1 = pos;
+                            result0 = parse_SAMEDENT();
+                            if (result0 !== null) {
+                              result1 = parse_EchoStatement();
+                              if (result1 !== null) {
+                                result2 = parse_EOL();
+                                result2 = result2 !== null ? result2 : "";
+                                if (result2 !== null) {
+                                  result0 = [result0, result1, result2];
+                                } else {
+                                  result0 = null;
+                                  pos = pos1;
+                                }
+                              } else {
+                                result0 = null;
+                                pos = pos1;
+                              }
+                            } else {
+                              result0 = null;
+                              pos = pos1;
+                            }
+                            if (result0 !== null) {
+                              result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                            }
                             if (result0 === null) {
-                              result0 = parse_ReturnStatement();
+                              pos = pos0;
+                            }
+                            if (result0 === null) {
+                              pos0 = pos;
+                              pos1 = pos;
+                              result0 = parse_SAMEDENT();
+                              if (result0 !== null) {
+                                result1 = parse_ReturnStatement();
+                                if (result1 !== null) {
+                                  result2 = parse_EOL();
+                                  result2 = result2 !== null ? result2 : "";
+                                  if (result2 !== null) {
+                                    result0 = [result0, result1, result2];
+                                  } else {
+                                    result0 = null;
+                                    pos = pos1;
+                                  }
+                                } else {
+                                  result0 = null;
+                                  pos = pos1;
+                                }
+                              } else {
+                                result0 = null;
+                                pos = pos1;
+                              }
+                              if (result0 !== null) {
+                                result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                              }
                               if (result0 === null) {
-                                result0 = parse_Include_onceStatement();
+                                pos = pos0;
+                              }
+                              if (result0 === null) {
+                                pos0 = pos;
+                                pos1 = pos;
+                                result0 = parse_SAMEDENT();
+                                if (result0 !== null) {
+                                  result1 = parse_Include_onceStatement();
+                                  if (result1 !== null) {
+                                    result2 = parse_EOL();
+                                    result2 = result2 !== null ? result2 : "";
+                                    if (result2 !== null) {
+                                      result0 = [result0, result1, result2];
+                                    } else {
+                                      result0 = null;
+                                      pos = pos1;
+                                    }
+                                  } else {
+                                    result0 = null;
+                                    pos = pos1;
+                                  }
+                                } else {
+                                  result0 = null;
+                                  pos = pos1;
+                                }
+                                if (result0 !== null) {
+                                  result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                                }
                                 if (result0 === null) {
-                                  result0 = parse_Require_onceStatement();
+                                  pos = pos0;
+                                }
+                                if (result0 === null) {
+                                  pos0 = pos;
+                                  pos1 = pos;
+                                  result0 = parse_SAMEDENT();
+                                  if (result0 !== null) {
+                                    result1 = parse_Require_onceStatement();
+                                    if (result1 !== null) {
+                                      result2 = parse_EOL();
+                                      result2 = result2 !== null ? result2 : "";
+                                      if (result2 !== null) {
+                                        result0 = [result0, result1, result2];
+                                      } else {
+                                        result0 = null;
+                                        pos = pos1;
+                                      }
+                                    } else {
+                                      result0 = null;
+                                      pos = pos1;
+                                    }
+                                  } else {
+                                    result0 = null;
+                                    pos = pos1;
+                                  }
+                                  if (result0 !== null) {
+                                    result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                                  }
                                   if (result0 === null) {
-                                    result0 = parse_RequireStatement();
+                                    pos = pos0;
+                                  }
+                                  if (result0 === null) {
+                                    pos0 = pos;
+                                    pos1 = pos;
+                                    result0 = parse_SAMEDENT();
+                                    if (result0 !== null) {
+                                      result1 = parse_RequireStatement();
+                                      if (result1 !== null) {
+                                        result2 = parse_EOL();
+                                        result2 = result2 !== null ? result2 : "";
+                                        if (result2 !== null) {
+                                          result0 = [result0, result1, result2];
+                                        } else {
+                                          result0 = null;
+                                          pos = pos1;
+                                        }
+                                      } else {
+                                        result0 = null;
+                                        pos = pos1;
+                                      }
+                                    } else {
+                                      result0 = null;
+                                      pos = pos1;
+                                    }
+                                    if (result0 !== null) {
+                                      result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                                    }
                                     if (result0 === null) {
-                                      result0 = parse_IncludeStatement();
+                                      pos = pos0;
+                                    }
+                                    if (result0 === null) {
+                                      pos0 = pos;
+                                      pos1 = pos;
+                                      result0 = parse_SAMEDENT();
+                                      if (result0 !== null) {
+                                        result1 = parse_IncludeStatement();
+                                        if (result1 !== null) {
+                                          result2 = parse_EOL();
+                                          result2 = result2 !== null ? result2 : "";
+                                          if (result2 !== null) {
+                                            result0 = [result0, result1, result2];
+                                          } else {
+                                            result0 = null;
+                                            pos = pos1;
+                                          }
+                                        } else {
+                                          result0 = null;
+                                          pos = pos1;
+                                        }
+                                      } else {
+                                        result0 = null;
+                                        pos = pos1;
+                                      }
+                                      if (result0 !== null) {
+                                        result0 = (function(offset, m) { return m; })(pos0, result0[1]);
+                                      }
+                                      if (result0 === null) {
+                                        pos = pos0;
+                                      }
                                       if (result0 === null) {
                                         result0 = parse_FunctionInLineCall();
                                         if (result0 === null) {
@@ -11614,11 +11832,11 @@ mammouth.parser = (function(){
             }
             if (result0 === null) {
               pos0 = pos;
-              result0 = parse_EODLiteral();
+              result0 = parse_PHPLiteral();
               if (result0 !== null) {
                 result0 = (function(offset, value) {
               		return {
-              			type: "EODLiteral",
+              			type: "PHPLiteral",
               			value: value
               		}
               	})(pos0, result0);
@@ -11628,17 +11846,32 @@ mammouth.parser = (function(){
               }
               if (result0 === null) {
                 pos0 = pos;
-                result0 = parse_EOTLiteral();
+                result0 = parse_EODLiteral();
                 if (result0 !== null) {
                   result0 = (function(offset, value) {
                 		return {
-                			type: "EOTLiteral",
+                			type: "EODLiteral",
                 			value: value
                 		}
                 	})(pos0, result0);
                 }
                 if (result0 === null) {
                   pos = pos0;
+                }
+                if (result0 === null) {
+                  pos0 = pos;
+                  result0 = parse_EOTLiteral();
+                  if (result0 !== null) {
+                    result0 = (function(offset, value) {
+                  		return {
+                  			type: "EOTLiteral",
+                  			value: value
+                  		}
+                  	})(pos0, result0);
+                  }
+                  if (result0 === null) {
+                    pos = pos0;
+                  }
                 }
               }
             }
@@ -13244,6 +13477,112 @@ mammouth.parser = (function(){
         return result0;
       }
       
+      function parse_PHPLiteral() {
+        var result0, result1, result2;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        if (input.substr(pos, 2) === "``") {
+          result0 = "``";
+          pos += 2;
+        } else {
+          result0 = null;
+          if (reportFailures === 0) {
+            matchFailed("\"``\"");
+          }
+        }
+        if (result0 !== null) {
+          result2 = parse_RAWString();
+          if (result2 !== null) {
+            result1 = [];
+            while (result2 !== null) {
+              result1.push(result2);
+              result2 = parse_RAWString();
+            }
+          } else {
+            result1 = null;
+          }
+          if (result1 !== null) {
+            if (input.substr(pos, 2) === "``") {
+              result2 = "``";
+              pos += 2;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"``\"");
+              }
+            }
+            if (result2 !== null) {
+              result0 = [result0, result1, result2];
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, RAW) {
+        		return RAW.join("");
+        	})(pos0, result0[1]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_RAWString() {
+        var result0, result1;
+        var pos0, pos1, pos2;
+        
+        pos0 = pos;
+        pos1 = pos;
+        pos2 = pos;
+        reportFailures++;
+        if (input.substr(pos, 2) === "``") {
+          result0 = "``";
+          pos += 2;
+        } else {
+          result0 = null;
+          if (reportFailures === 0) {
+            matchFailed("\"``\"");
+          }
+        }
+        reportFailures--;
+        if (result0 === null) {
+          result0 = "";
+        } else {
+          result0 = null;
+          pos = pos2;
+        }
+        if (result0 !== null) {
+          result1 = parse_SourceCharacter();
+          if (result1 !== null) {
+            result0 = [result0, result1];
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, char_) { return char_; })(pos0, result0[1]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
       function parse_Ll() {
         var result0;
         
@@ -14455,7 +14794,7 @@ mammouth.helpers = {
 	slice_php_function: "function _m_slice($var, $start, $end) {if(gettype($var)=='string') {return substr($var, $start, $end);} elseif(gettype($var)=='array') {return array_slice($var, $start, $end);}}",
 	len_php_function: "function _m_len($var) {if(gettype($var)=='string') {return strlen($var);} elseif(gettype($var)=='array') {return count($var);}}"
 };
-﻿mammouth.VERSION = '0.2.2';
+﻿mammouth.VERSION = '0.2.3';
 mammouth.compile = function(code) {
 	Tokens = mammouth.Tokens;
 	var Use_Slice_Function = false;
@@ -14635,6 +14974,13 @@ mammouth.compile = function(code) {
 					r += ';\n';
 				} else {
 					r += '\n';
+				}
+				return r;
+			case 'PHPLiteral':
+				r = '';
+				r += seq.value;
+				if(seq.only == true) {
+					r += ';';
 				}
 				return r;
 			case 'Variable':
